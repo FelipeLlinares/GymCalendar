@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
             MainActivity2.putExtra("Fecha",dateSeleccionado.toString());
             startActivity(MainActivity2);
         } else {
-            Toast.makeText(this, "Dia no seleccionado", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.FECHA_NO_SELECCIONADA, Toast.LENGTH_LONG).show();
         }
     }
 
