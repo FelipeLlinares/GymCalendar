@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -16,9 +17,12 @@ import android.widget.TextView;
 import android.view.View;
 import android.widget.Toast;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class MainActivity2 extends AppCompatActivity {
     private RecyclerView recyclerView;
@@ -31,17 +35,9 @@ public class MainActivity2 extends AppCompatActivity {
     private TextView txtPeso;
     private TextView txtSeries;
     private TextView txtRepeticiones;
-    private Button btnAñadir;
-    private Button btnBorrar;
-    private Button btnModificar;
-    private Button btnLimpiar;
-
 
     private RutinaDbHelper dbHelper;
     private SQLiteDatabase db;
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,20 +55,57 @@ public class MainActivity2 extends AppCompatActivity {
         txtPeso = (TextView) findViewById(R.id.txtPeso);
         txtRepeticiones = (TextView) findViewById(R.id.txtRepeticiones);
         txtSeries = (TextView) findViewById(R.id.txtSeries);
-        btnAñadir = (Button) findViewById(R.id.btnAñadir);
-        btnModificar = (Button) findViewById(R.id.btnModificar);
-        btnBorrar = (Button) findViewById(R.id.btnBorrar);
-        btnLimpiar = (Button) findViewById(R.id.btnLimpiar);
 
         txtFecha = (TextView) findViewById(R.id.txtFecha);
         txtFecha.setText(fecha);
 
-        List<Ejercicio> ejercicioList = 
+        try {
+            List<Ejercicio> ejercicioList = buscarEjericios();
+            recyclerView.
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
         db= MainActivity.db;
         dbHelper= MainActivity.dbHelper;
 
 
+    }
+
+    private List<Ejercicio> buscarEjericios() throws ParseException {
+        List<Ejercicio> ejercicioList = new ArrayList<>();
+
+        String[] columns = {
+                RutinaContract.RutinaEntry._ID,
+                RutinaContract.RutinaEntry.COLUMN_NAME_FECHA,
+                RutinaContract.RutinaEntry.COLUMN_NAME_EJERCICIO,
+                RutinaContract.RutinaEntry.COLUMN_NAME_PESO,
+                RutinaContract.RutinaEntry.COLUMN_NAME_SERIES,
+                RutinaContract.RutinaEntry.COLUMN_NAME_REPETICIONES
+        };
+        String where = RutinaContract.RutinaEntry.COLUMN_NAME_FECHA + " = ?";
+        String[] whereArgs = { txtFecha.getText().toString() };
+
+        Cursor cursor = db.query(RutinaContract.RutinaEntry.TABLE_NAME,columns,where,whereArgs,null,null,null);
+        Ejercicio ejercicio;
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+        try {
+            while (cursor.moveToNext()) {
+                ejercicio = new Ejercicio();
+                ejercicio.set_ID(cursor.getInt(0));
+                ejercicio.setFecha(dateFormat.parse(cursor.getString(1)));
+                ejercicio.setEjercicio(cursor.getString(2));
+                ejercicio.setPeso(cursor.getInt(3));
+                ejercicio.setNumSeries(cursor.getInt(4));
+                ejercicio.setNumRepeticiones(cursor.getInt(5));
+
+                ejercicioList.add(ejercicio);
+            }
+        } finally {
+            cursor.close();
+        }
+        return ejercicioList;
     }
 
     @Override
@@ -81,7 +114,7 @@ public class MainActivity2 extends AppCompatActivity {
         startActivity(main);
     }
 
-    public void onAñadir(View view){
+    public void onAñadir(View view) {
         ContentValues values = new ContentValues();
         values.put(RutinaContract.RutinaEntry.COLUMN_NAME_FECHA, txtFecha.getText().toString());
         values.put(RutinaContract.RutinaEntry.COLUMN_NAME_REPETICIONES, txtRepeticiones.getText().toString());
@@ -89,7 +122,7 @@ public class MainActivity2 extends AppCompatActivity {
         values.put(RutinaContract.RutinaEntry.COLUMN_NAME_PESO, txtPeso.getText().toString());
         values.put(RutinaContract.RutinaEntry.COLUMN_NAME_EJERCICIO, txtEjercicio.getText().toString());
 
-
+    }
 
 
 
