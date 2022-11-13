@@ -1,8 +1,28 @@
 package com.example.gymcalendar;
 
+import java.util.Date;
+
 public class Ejercicio {
+    public int get_ID() {
+        return _ID;
+    }
+
+    public void set_ID(int _ID) {
+        this._ID = _ID;
+    }
+
     private int _ID;
     private String Ejercicio;
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    private Date fecha;
     private int numSeries;
     private int peso;
     private int numRepeticiones;
