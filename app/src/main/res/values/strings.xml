@@ -9,6 +9,6 @@
     <string name="REPETICIONES">REPETICIONES</string>
     <string name="PESO">PESO</string>
     <string name="SERIES">SERIES</string>
-    <string name="FECHA_NO_SELECCIONADA">Una debe estar seleccionada</string>
-    <string name="RELLENAR_TODOS_CAMPOS">Por favor, rellene todos los campos</string>
+    <string name="FECHA_NO_SELECCIONADA">Por favor, seleccione una fecha.</string>
+    <string name="RELLENAR_TODOS_CAMPOS">Por favor, rellene todos los campos.</string>
 </resources>

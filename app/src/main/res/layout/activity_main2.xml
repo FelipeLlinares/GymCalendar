@@ -14,7 +14,7 @@
         android:layout_marginBottom="36dp"
         app:layout_constraintBottom_toTopOf="@+id/btnAñadir"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintHorizontal_bias="0.469"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtFecha"
         app:layout_constraintVertical_bias="0.0" />
@@ -65,11 +65,11 @@
         android:id="@+id/txtEjercicio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
         android:layout_marginTop="31dp"
         android:layout_marginBottom="32dp"
         android:text="@string/EJERCICIO"
         android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
         app:layout_constraintBottom_toTopOf="@+id/txtPeso"
         app:layout_constraintEnd_toStartOf="@+id/btnAñadir"
         app:layout_constraintHorizontal_bias="0.0"
@@ -148,8 +148,8 @@
         android:layout_height="wrap_content"
         android:onClick="onModificar"
         android:text="@string/MODIFICAR"
-        tools:layout_editor_absoluteX="293dp"
-        tools:layout_editor_absoluteY="486dp" />
+        tools:layout_editor_absoluteX="311dp"
+        tools:layout_editor_absoluteY="483dp" />
 
     <TextView
         android:id="@+id/txtFecha"

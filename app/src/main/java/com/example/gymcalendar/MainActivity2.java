@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.view.View;
+import android.widget.Toast;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -63,5 +65,5 @@ public class MainActivity2 extends AppCompatActivity {
         startActivity(main);
     }
 
-
+    
 }
