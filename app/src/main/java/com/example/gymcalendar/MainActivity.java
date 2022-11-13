@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
         dbHelper = new RutinaDbHelper(getApplicationContext(), "myrutina.db");
         db = dbHelper.getWritableDatabase();
+        RutinaContract.RutinaEntry.initRutina(db);
 
         calendarView = (CalendarView) findViewById(R.id.calendarView);
         btnVerDia = (Button) findViewById(R.id.btnVerDia) ;
@@ -44,13 +45,13 @@ public class MainActivity extends AppCompatActivity {
             dateSeleccionado = new Date(year,month,dayOfMonth);
             }
         });
-        RutinaContract.RutinaEntry.initRutina(db);
+
     }
 
     public void onClick(View view){
         if (dateSeleccionado != null) {
             Intent MainActivity2 = new Intent(this, MainActivity2.class);
-            MainActivity2.putExtra("Fecha",dateSeleccionado);
+            MainActivity2.putExtra("Fecha",dateSeleccionado.toString());
             startActivity(MainActivity2);
         } else {
             Toast.makeText(this, "Dia no seleccionado", Toast.LENGTH_LONG).show();
