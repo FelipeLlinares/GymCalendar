@@ -3,6 +3,7 @@ package com.example.gymcalendar;
 import static java.sql.DriverManager.println;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.ContentValues;
@@ -38,11 +39,15 @@ public class MainActivity2 extends AppCompatActivity {
 
     private RutinaDbHelper dbHelper;
     private SQLiteDatabase db;
+    private EjerciciosHeaderAdapter ejerciciosHeaderAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+
+        db= MainActivity.db;
+        dbHelper= MainActivity.dbHelper;
 
         String fecha = getIntent().getStringExtra("Fecha");
 
@@ -61,15 +66,12 @@ public class MainActivity2 extends AppCompatActivity {
 
         try {
             List<Ejercicio> ejercicioList = buscarEjericios();
-            recyclerView.
+            ejerciciosHeaderAdapter = new EjerciciosHeaderAdapter(MainActivity2.this,ejercicioList);
+            recyclerView.setAdapter(ejerciciosHeaderAdapter);
+            recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity2.this));
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
-        db= MainActivity.db;
-        dbHelper= MainActivity.dbHelper;
-
-
     }
 
     private List<Ejercicio> buscarEjericios() throws ParseException {
@@ -83,8 +85,8 @@ public class MainActivity2 extends AppCompatActivity {
                 RutinaContract.RutinaEntry.COLUMN_NAME_SERIES,
                 RutinaContract.RutinaEntry.COLUMN_NAME_REPETICIONES
         };
-        String where = RutinaContract.RutinaEntry.COLUMN_NAME_FECHA + " = ?";
-        String[] whereArgs = { txtFecha.getText().toString() };
+        String where = RutinaContract.RutinaEntry.COLUMN_NAME_EJERCICIO + " = ?";
+        String[] whereArgs = { "Sentadilla" };
 
         Cursor cursor = db.query(RutinaContract.RutinaEntry.TABLE_NAME,columns,where,whereArgs,null,null,null);
         Ejercicio ejercicio;
