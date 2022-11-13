@@ -126,15 +126,19 @@ public class MainActivity2 extends AppCompatActivity {
         dbHelper = new RutinaDbHelper(getApplicationContext(), "myrutina.db");
         db = dbHelper.getWritableDatabase();
 
-        ContentValues values = new ContentValues();
-        values.put(RutinaContract.RutinaEntry.COLUMN_NAME_FECHA, txtFecha.getText().toString());
-        values.put(RutinaContract.RutinaEntry.COLUMN_NAME_REPETICIONES, txtRepeticiones.getText().toString());
-        values.put(RutinaContract.RutinaEntry.COLUMN_NAME_SERIES, txtSeries.getText().toString());
-        values.put(RutinaContract.RutinaEntry.COLUMN_NAME_PESO, txtPeso.getText().toString());
-        values.put(RutinaContract.RutinaEntry.COLUMN_NAME_EJERCICIO, txtEjercicio.getText().toString());
-        db.insert(RutinaContract.RutinaEntry.TABLE_NAME,null,values);
-        db.close();
+        if(txtFecha.getText().toString().isEmpty() || txtRepeticiones.getText().toString().isEmpty() || txtSeries.getText().toString().isEmpty() || txtPeso.getText().toString().isEmpty() || txtEjercicio.getText().toString().isEmpty()){
+            Toast.makeText(this, R.string.RELLENAR_TODOS_CAMPOS, Toast.LENGTH_LONG).show();
+        }else{
+            ContentValues values = new ContentValues();
+            values.put(RutinaContract.RutinaEntry.COLUMN_NAME_FECHA, txtFecha.getText().toString());
+            values.put(RutinaContract.RutinaEntry.COLUMN_NAME_REPETICIONES, txtRepeticiones.getText().toString());
+            values.put(RutinaContract.RutinaEntry.COLUMN_NAME_SERIES, txtSeries.getText().toString());
+            values.put(RutinaContract.RutinaEntry.COLUMN_NAME_PESO, txtPeso.getText().toString());
+            values.put(RutinaContract.RutinaEntry.COLUMN_NAME_EJERCICIO, txtEjercicio.getText().toString());
+            db.insert(RutinaContract.RutinaEntry.TABLE_NAME,null,values);
+            db.close();
 
+        }
     }
 
 
@@ -170,7 +174,7 @@ public class MainActivity2 extends AppCompatActivity {
 
     public void onModificar(View view){
         if(seleccionado==null ){
-            Toast.makeText(this, R.string.BORRAR_NO_VACIO, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.modificar_debeSeleccionar, Toast.LENGTH_LONG).show();
         }else{
             dbHelper = new RutinaDbHelper(getApplicationContext(), "myrutina.db");
             db = dbHelper.getWritableDatabase();

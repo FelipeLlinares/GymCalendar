@@ -4,165 +4,224 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity2">
+    tools:context=".MainActivity2"><![CDATA[
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="381dp"
-        android:layout_height="281dp"
-        android:layout_marginTop="27dp"
-        android:layout_marginBottom="36dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnAñadir"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.469"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtFecha"
-        app:layout_constraintVertical_bias="0.0" />
 
-    <EditText
-        android:id="@+id/etxEjercicio"
-        android:layout_width="118dp"
-        android:layout_height="29dp"
-        android:layout_marginStart="140dp"
-        android:layout_marginBottom="32dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/etxPeso"
-        app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
-        android:id="@+id/etxPeso"
-        android:layout_width="118dp"
-        android:layout_height="29dp"
-        android:layout_marginStart="76dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toEndOf="@+id/txtPeso"
-        tools:layout_editor_absoluteY="462dp" />
 
-    <EditText
-        android:id="@+id/etxSeries"
-        android:layout_width="118dp"
-        android:layout_height="29dp"
-        android:layout_marginStart="60dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toEndOf="@+id/txtSeries"
-        tools:layout_editor_absoluteY="521dp" />
 
-    <EditText
-        android:id="@+id/etxRepeticiones"
-        android:layout_width="118dp"
-        android:layout_height="29dp"
-        android:layout_marginStart="9dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toStartOf="@+id/btnBorrar"
-        app:layout_constraintStart_toEndOf="@+id/txtRepeticiones"
-        tools:layout_editor_absoluteY="589dp" />
 
-    <TextView
-        android:id="@+id/txtEjercicio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="31dp"
-        android:layout_marginBottom="32dp"
-        android:text="@string/EJERCICIO"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
-        app:layout_constraintBottom_toTopOf="@+id/txtPeso"
+
+
+
+
+
+    app:layout_constraintBottom_toTopOf="@+id/txtPeso"
         app:layout_constraintEnd_toStartOf="@+id/btnAñadir"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recyclerView"
         app:layout_constraintVertical_bias="0.09" />
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    ]]>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="381dp"
+        android:layout_height="281dp"
+        android:layout_marginTop="27dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtFecha" />
+
+    <EditText
+        android:id="@+id/etxEjercicio"
+        android:layout_width="74dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/txtEjercicio"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+
+    <EditText
+        android:id="@+id/etxPeso"
+        android:layout_width="74dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="90dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/txtPeso"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+
+    <EditText
+        android:id="@+id/etxSeries"
+        android:layout_width="75dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="151dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/txtSeries"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+
+    <EditText
+        android:id="@+id/etxRepeticiones"
+        android:layout_width="75dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="236dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/txtRepeticiones"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+
+    <TextView
+        android:id="@+id/txtEjercicio"
+        android:layout_width="85dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="408dp"
+        android:text="@string/EJERCICIO"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/txtPeso"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="89dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
         android:text="@string/PESO"
+        android:textSize="16sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="472dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtEjercicio" />
 
     <TextView
         android:id="@+id/txtSeries"
-        android:layout_width="47dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
+        android:layout_width="97dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="156dp"
         android:text="@string/SERIES"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="531dp" />
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
 
     <TextView
         android:id="@+id/txtRepeticiones"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginEnd="9dp"
+        android:layout_width="117dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="208dp"
+        android:layout_marginBottom="109dp"
         android:text="@string/REPETICIONES"
+        android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/etxRepeticiones"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="589dp" />
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
 
     <Button
         android:id="@+id/btnLimpiar"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="282dp"
-        android:layout_marginEnd="33dp"
+        android:layout_marginTop="255dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="54dp"
         android:onClick="onLimpiar"
         android:text="@string/LIMPIAR"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="639dp" />
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView"
+        app:layout_constraintVertical_bias="0.298" />
 
     <Button
         android:id="@+id/btnBorrar"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="184dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="23dp"
         android:onClick="onBorrar"
         android:text="@string/BORRAR"
+        app:layout_constraintBottom_toTopOf="@+id/btnLimpiar"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="570dp" />
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView"
+        app:layout_constraintVertical_bias="0.058" />
 
     <Button
         android:id="@+id/btnAñadir"
-        android:layout_width="104dp"
-        android:layout_height="47dp"
+        android:layout_width="120dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="28dp"
         android:onClick="onAñadir"
         android:text="@string/AÑADIR"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.925"
-        app:layout_constraintStart_toEndOf="@+id/etxEjercicio"
-        tools:layout_editor_absoluteY="411dp" />
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
 
     <Button
         android:id="@+id/btnModificar"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="108dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="28dp"
         android:onClick="onModificar"
         android:text="@string/MODIFICAR"
-        tools:layout_editor_absoluteX="311dp"
-        tools:layout_editor_absoluteY="483dp" />
+        app:layout_constraintBottom_toTopOf="@+id/btnBorrar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/txtFecha"
         android:layout_width="117dp"
         android:layout_height="35dp"
-        android:layout_marginTop="16dp"
-        android:text="diaa"
+        android:text="FECHA"
         android:textAlignment="center"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/etxEjercicio"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.065" />
+        app:layout_constraintVertical_bias="0.051" />
 </androidx.constraintlayout.widget.ConstraintLayout>
