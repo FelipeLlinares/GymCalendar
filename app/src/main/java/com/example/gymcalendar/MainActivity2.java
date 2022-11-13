@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -33,6 +34,13 @@ public class MainActivity2 extends AppCompatActivity {
     private Button btnModificar;
     private Button btnLimpiar;
 
+
+    private RutinaDbHelper dbHelper;
+    private SQLiteDatabase db;
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +65,10 @@ public class MainActivity2 extends AppCompatActivity {
         txtFecha = (TextView) findViewById(R.id.txtFecha);
         txtFecha.setText(fecha);
 
+
+        db= MainActivity.db;
+        dbHelper= MainActivity.dbHelper;
+
     }
 
     @Override
@@ -65,5 +77,29 @@ public class MainActivity2 extends AppCompatActivity {
         startActivity(main);
     }
 
-    
+
+
+
+
+
+
+
+
+    public void onLimpiar(View view){
+        etxEjercicio.setText("");
+        etxPeso.setText("");
+        etxRepeticiones.setText("");
+        etxSeries.setText("");
+
+
+    }
+
+
+
+    public void onBorrar(View view){
+
+
+
+    }
+
 }
