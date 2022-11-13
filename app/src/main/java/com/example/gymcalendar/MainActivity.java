@@ -18,13 +18,13 @@ public class MainActivity extends AppCompatActivity {
     private CalendarView calendarView;
     private Button btnVerDia;
     private String dateSeleccionado;
-
+    public static final String DATABASE_NAME = "Rutina.db";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        dbHelper = new RutinaDbHelper(getApplicationContext(), "rutina.db");
+        dbHelper = new RutinaDbHelper(getApplicationContext(), DATABASE_NAME);
         db = dbHelper.getWritableDatabase();
         //RutinaContract.RutinaEntry.initRutina(db);
 

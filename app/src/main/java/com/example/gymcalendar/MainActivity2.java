@@ -1,5 +1,6 @@
 package com.example.gymcalendar;
 
+import static com.example.gymcalendar.MainActivity.DATABASE_NAME;
 import static java.sql.DriverManager.println;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -38,6 +40,7 @@ public class MainActivity2 extends AppCompatActivity {
     private SQLiteDatabase db;
     private EjerciciosHeaderAdapter ejerciciosHeaderAdapter;
 
+    private List<Ejercicio> ejercicioList;
     private Ejercicio seleccionado = null;
 
 
@@ -64,15 +67,43 @@ public class MainActivity2 extends AppCompatActivity {
         txtFecha = (TextView) findViewById(R.id.txtFecha);
         txtFecha.setText(fecha);
 
+        cargarGrid();
+
+        recyclerView.addOnItemTouchListener(new es.gestion.clinicaoftalmologica.RecyclerItemClickListener(this, recyclerView, new es.gestion.clinicaoftalmologica.RecyclerItemClickListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                seleccionado = ejercicioList.get(position);
+                etxEjercicio.setText(seleccionado.getEjercicio());
+                etxPeso.setText(String.valueOf(seleccionado.getPeso()));
+                etxRepeticiones.setText(String.valueOf(seleccionado.getNumRepeticiones()));
+                etxSeries.setText(String.valueOf(seleccionado.getNumSeries()));
+                desmarcar();
+                view.setBackgroundColor(Color.parseColor("#808080"));
+            }
+
+            @Override
+            public void onItemLongClick(View view, int position) {
+                // ...
+            }
+        }));
+
+    }
+    private void desmarcar(){
+        int n = recyclerView.getChildCount();
+        for(int i=0;i<n;i++){
+            recyclerView.getChildAt(i).setBackgroundColor(Color.parseColor("#FFFFFF"));
+        }
+    }
+
+    private void cargarGrid(){
         try {
-            List<Ejercicio> ejercicioList = buscarEjericios();
-            ejerciciosHeaderAdapter = new EjerciciosHeaderAdapter(MainActivity2.this,ejercicioList);
-            recyclerView.setAdapter(ejerciciosHeaderAdapter);
-            recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity2.this));
+            ejercicioList = buscarEjericios();
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
+        ejerciciosHeaderAdapter = new EjerciciosHeaderAdapter(MainActivity2.this,ejercicioList);
+        recyclerView.setAdapter(ejerciciosHeaderAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity2.this));
     }
 
     private List<Ejercicio> buscarEjericios() throws ParseException {
@@ -118,66 +149,87 @@ public class MainActivity2 extends AppCompatActivity {
 
     public void onAñadir(View view) {
 
-        dbHelper = new RutinaDbHelper(getApplicationContext(), "myrutina.db");
+        dbHelper = new RutinaDbHelper(getApplicationContext(), DATABASE_NAME);
         db = dbHelper.getWritableDatabase();
 
-        if(txtFecha.getText().toString().isEmpty() || txtRepeticiones.getText().toString().isEmpty() || txtSeries.getText().toString().isEmpty() || txtPeso.getText().toString().isEmpty() || txtEjercicio.getText().toString().isEmpty()){
+        if(etxRepeticiones.getText().toString().isEmpty()
+                || etxSeries.getText().toString().isEmpty()
+                || etxPeso.getText().toString().isEmpty()
+                || etxEjercicio.getText().toString().isEmpty()){
             Toast.makeText(this, R.string.RELLENAR_TODOS_CAMPOS, Toast.LENGTH_LONG).show();
         }else{
             ContentValues values = new ContentValues();
             values.put(RutinaContract.RutinaEntry.COLUMN_NAME_FECHA, txtFecha.getText().toString());
-            values.put(RutinaContract.RutinaEntry.COLUMN_NAME_REPETICIONES, txtRepeticiones.getText().toString());
-            values.put(RutinaContract.RutinaEntry.COLUMN_NAME_SERIES, txtSeries.getText().toString());
-            values.put(RutinaContract.RutinaEntry.COLUMN_NAME_PESO, txtPeso.getText().toString());
-            values.put(RutinaContract.RutinaEntry.COLUMN_NAME_EJERCICIO, txtEjercicio.getText().toString());
+            values.put(RutinaContract.RutinaEntry.COLUMN_NAME_REPETICIONES, etxRepeticiones.getText().toString());
+            values.put(RutinaContract.RutinaEntry.COLUMN_NAME_SERIES, etxSeries.getText().toString());
+            values.put(RutinaContract.RutinaEntry.COLUMN_NAME_PESO, etxPeso.getText().toString());
+            values.put(RutinaContract.RutinaEntry.COLUMN_NAME_EJERCICIO, etxEjercicio.getText().toString());
             db.insert(RutinaContract.RutinaEntry.TABLE_NAME,null,values);
-            db.close();
 
+            limpiarCampos();
+            cargarGrid();
+            db.close();
         }
     }
 
     public void onLimpiar(View view){
+        limpiarCampos();
+    }
+
+    private void limpiarCampos(){
         etxEjercicio.setText("");
         etxPeso.setText("");
         etxRepeticiones.setText("");
         etxSeries.setText("");
+        seleccionado = null;
+        desmarcar();
     }
 
 
-
     public void onBorrar(View view){
-    if(seleccionado==null ){
-        Toast.makeText(this, R.string.BORRAR_NO_VACIO, Toast.LENGTH_LONG).show();
-    }else{
-        dbHelper = new RutinaDbHelper(getApplicationContext(), "myrutina.db");
-        db = dbHelper.getWritableDatabase();
-        String where= RutinaContract.RutinaEntry._ID + " = ?";
-        String[] whereArgs = {String.valueOf(seleccionado.get_ID())};
-        db.delete(RutinaContract.RutinaEntry.TABLE_NAME, where, whereArgs);
-        db.close();
-
-         }
+        if(seleccionado==null ){
+            Toast.makeText(this, R.string.BORRAR_NO_VACIO, Toast.LENGTH_LONG).show();
+        }else{
+            dbHelper = new RutinaDbHelper(getApplicationContext(), DATABASE_NAME);
+            db = dbHelper.getWritableDatabase();
+            String where= RutinaContract.RutinaEntry._ID + " = ?";
+            String[] whereArgs = {String.valueOf(seleccionado.get_ID())};
+            db.delete(RutinaContract.RutinaEntry.TABLE_NAME, where, whereArgs);
+            cargarGrid();
+            limpiarCampos();
+            db.close();
+        }
     }
 
 
     public void onModificar(View view){
-        if(seleccionado==null ){
+        if(seleccionado==null){
             Toast.makeText(this, R.string.modificar_debeSeleccionar, Toast.LENGTH_LONG).show();
         }else{
-            dbHelper = new RutinaDbHelper(getApplicationContext(), "myrutina.db");
+            dbHelper = new RutinaDbHelper(getApplicationContext(), DATABASE_NAME);
             db = dbHelper.getWritableDatabase();
 
-            ContentValues values = new ContentValues();
-            values.put(RutinaContract.RutinaEntry.COLUMN_NAME_FECHA, txtFecha.getText().toString());
-            values.put(RutinaContract.RutinaEntry.COLUMN_NAME_REPETICIONES, txtRepeticiones.getText().toString());
-            values.put(RutinaContract.RutinaEntry.COLUMN_NAME_SERIES, txtSeries.getText().toString());
-            values.put(RutinaContract.RutinaEntry.COLUMN_NAME_PESO, txtPeso.getText().toString());
-            values.put(RutinaContract.RutinaEntry.COLUMN_NAME_EJERCICIO, txtEjercicio.getText().toString());
+            if(etxRepeticiones.getText().toString().isEmpty()
+                    || etxSeries.getText().toString().isEmpty()
+                    || etxPeso.getText().toString().isEmpty()
+                    || etxEjercicio.getText().toString().isEmpty()){
+                Toast.makeText(this, R.string.RELLENAR_TODOS_CAMPOS, Toast.LENGTH_LONG).show();
+            }else {
+                ContentValues values = new ContentValues();
+                values.put(RutinaContract.RutinaEntry.COLUMN_NAME_FECHA, txtFecha.getText().toString());
+                values.put(RutinaContract.RutinaEntry.COLUMN_NAME_REPETICIONES, etxRepeticiones.getText().toString());
+                values.put(RutinaContract.RutinaEntry.COLUMN_NAME_SERIES, etxSeries.getText().toString());
+                values.put(RutinaContract.RutinaEntry.COLUMN_NAME_PESO, etxPeso.getText().toString());
+                values.put(RutinaContract.RutinaEntry.COLUMN_NAME_EJERCICIO, etxEjercicio.getText().toString());
 
-            String where= RutinaContract.RutinaEntry._ID + " = ?";
-            String[] whereArgs = {String.valueOf(seleccionado.get_ID())};
-            db.update(RutinaContract.RutinaEntry.TABLE_NAME,values, where, whereArgs);
-            db.close();
+                String where = RutinaContract.RutinaEntry._ID + " = ?";
+                String[] whereArgs = {String.valueOf(seleccionado.get_ID())};
+                db.update(RutinaContract.RutinaEntry.TABLE_NAME, values, where, whereArgs);
+
+                limpiarCampos();
+                cargarGrid();
+                db.close();
+            }
         }
     }
 
