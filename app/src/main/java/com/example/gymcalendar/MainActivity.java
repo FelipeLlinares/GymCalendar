@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     private CalendarView calendarView;
     private Button btnVerDia;
-    private Date dateSeleccionado;
+    private String dateSeleccionado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month,
                                             int dayOfMonth) {
-            dateSeleccionado = new Date(year,month,dayOfMonth);
+            dateSeleccionado = dayOfMonth + "/"+ month+ "/" + year;
             }
         });
 
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     public void onClick(View view){
         if (dateSeleccionado != null) {
             Intent MainActivity2 = new Intent(this, MainActivity2.class);
-            MainActivity2.putExtra("Fecha",dateSeleccionado.toString());
+            MainActivity2.putExtra("Fecha",dateSeleccionado);
             startActivity(MainActivity2);
         } else {
             Toast.makeText(this, R.string.FECHA_NO_SELECCIONADA, Toast.LENGTH_LONG).show();

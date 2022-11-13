@@ -1,5 +1,7 @@
 package com.example.gymcalendar;
 
+import static java.sql.DriverManager.println;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -9,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class MainActivity2 extends AppCompatActivity {
