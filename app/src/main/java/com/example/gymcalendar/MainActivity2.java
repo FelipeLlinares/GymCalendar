@@ -132,13 +132,14 @@ public class MainActivity2 extends AppCompatActivity {
         values.put(RutinaContract.RutinaEntry.COLUMN_NAME_SERIES, txtSeries.getText().toString());
         values.put(RutinaContract.RutinaEntry.COLUMN_NAME_PESO, txtPeso.getText().toString());
         values.put(RutinaContract.RutinaEntry.COLUMN_NAME_EJERCICIO, txtEjercicio.getText().toString());
-
-    }
-
         db.insert(RutinaContract.RutinaEntry.TABLE_NAME,null,values);
         db.close();
 
     }
+
+
+
+
 
 
 
