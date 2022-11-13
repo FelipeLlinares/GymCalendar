@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    protected static RutinaDbHelper dbHelper;
+    protected  static RutinaDbHelper dbHelper;
     protected static SQLiteDatabase db;
 
     private CalendarView calendarView;
