@@ -57,6 +57,8 @@ public class MainActivity2 extends AppCompatActivity {
         txtFecha = (TextView) findViewById(R.id.txtFecha);
         txtFecha.setText(fecha);
 
+        List<Ejercicio> ejercicioList = 
+
     }
 
     @Override
@@ -67,7 +69,11 @@ public class MainActivity2 extends AppCompatActivity {
 
     public void onAñadir(View view){
         ContentValues values = new ContentValues();
-        values.put(RutinaContract.RutinaEntry.COLUMN_NAME_FECHA, (String) txtFecha.getText());
+        values.put(RutinaContract.RutinaEntry.COLUMN_NAME_FECHA, txtFecha.getText().toString());
+        values.put(RutinaContract.RutinaEntry.COLUMN_NAME_REPETICIONES, txtRepeticiones.getText().toString());
+        values.put(RutinaContract.RutinaEntry.COLUMN_NAME_SERIES, txtSeries.getText().toString());
+        values.put(RutinaContract.RutinaEntry.COLUMN_NAME_PESO, txtPeso.getText().toString());
+        values.put(RutinaContract.RutinaEntry.COLUMN_NAME_EJERCICIO, txtEjercicio.getText().toString());
 
     }
 }
