@@ -77,10 +77,6 @@ public class MainActivity2 extends AppCompatActivity {
             e.printStackTrace();
         }
 
-       //  db= MainActivity.db;
-       // dbHelper= MainActivity.dbHelper;
-
-
         seleccionado=null;
 
 
