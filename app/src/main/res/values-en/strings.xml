@@ -12,4 +12,5 @@
     <string name="SERIES">SETS</string>
     <string name="FECHA_NO_SELECCIONADA">The date should be selected.</string>
     <string name="RELLENAR_TODOS_CAMPOS">Please,  fill out the required data.</string>
+    <string name="BORRAR_NO_VACIO">Select an exercise to delete it.</string>
 </resources>

@@ -41,6 +41,7 @@ public class MainActivity2 extends AppCompatActivity {
     private SQLiteDatabase db;
 
 
+    private Ejercicio seleccionado;
 
 
     @Override
@@ -67,10 +68,13 @@ public class MainActivity2 extends AppCompatActivity {
         txtFecha = (TextView) findViewById(R.id.txtFecha);
         txtFecha.setText(fecha);
 
-        List<Ejercicio> ejercicioList = 
+        List<Ejercicio> ejercicioList =
 
-        db= MainActivity.db;
-        dbHelper= MainActivity.dbHelper;
+       //  db= MainActivity.db;
+       // dbHelper= MainActivity.dbHelper;
+
+
+        seleccionado=null;
 
 
     }
@@ -81,7 +85,11 @@ public class MainActivity2 extends AppCompatActivity {
         startActivity(main);
     }
 
-    public void onAñadir(View view){
+    public void onAñadir(View view) {
+
+        dbHelper = new RutinaDbHelper(getApplicationContext(), "myrutina.db");
+        db = dbHelper.getWritableDatabase();
+
         ContentValues values = new ContentValues();
         values.put(RutinaContract.RutinaEntry.COLUMN_NAME_FECHA, txtFecha.getText().toString());
         values.put(RutinaContract.RutinaEntry.COLUMN_NAME_REPETICIONES, txtRepeticiones.getText().toString());
@@ -90,6 +98,10 @@ public class MainActivity2 extends AppCompatActivity {
         values.put(RutinaContract.RutinaEntry.COLUMN_NAME_EJERCICIO, txtEjercicio.getText().toString());
 
 
+        db.insert(RutinaContract.RutinaEntry.TABLE_NAME,null,values);
+        db.close();
+
+    }
 
 
 
@@ -101,15 +113,45 @@ public class MainActivity2 extends AppCompatActivity {
         etxPeso.setText("");
         etxRepeticiones.setText("");
         etxSeries.setText("");
-
-
     }
 
 
 
     public void onBorrar(View view){
+    if(seleccionado==null ){
+        Toast.makeText(this, R.string.BORRAR_NO_VACIO, Toast.LENGTH_LONG).show();
+    }else{
+        dbHelper = new RutinaDbHelper(getApplicationContext(), "myrutina.db");
+        db = dbHelper.getWritableDatabase();
+        String where= RutinaContract.RutinaEntry._ID + " = ?";
+        String[] whereArgs = {String.valueOf(seleccionado.get_ID())};
+        db.delete(RutinaContract.RutinaEntry.TABLE_NAME, where, whereArgs);
+        db.close();
+
+         }
+    }
 
 
+    public void onModificar(View view){
+        if(seleccionado==null ){
+            Toast.makeText(this, R.string.BORRAR_NO_VACIO, Toast.LENGTH_LONG).show();
+        }else{
+            dbHelper = new RutinaDbHelper(getApplicationContext(), "myrutina.db");
+            db = dbHelper.getWritableDatabase();
+
+            ContentValues values = new ContentValues();
+            values.put(RutinaContract.RutinaEntry.COLUMN_NAME_FECHA, txtFecha.getText().toString());
+            values.put(RutinaContract.RutinaEntry.COLUMN_NAME_REPETICIONES, txtRepeticiones.getText().toString());
+            values.put(RutinaContract.RutinaEntry.COLUMN_NAME_SERIES, txtSeries.getText().toString());
+            values.put(RutinaContract.RutinaEntry.COLUMN_NAME_PESO, txtPeso.getText().toString());
+            values.put(RutinaContract.RutinaEntry.COLUMN_NAME_EJERCICIO, txtEjercicio.getText().toString());
+
+            String where= RutinaContract.RutinaEntry._ID + " = ?";
+            String[] whereArgs = {String.valueOf(seleccionado.get_ID())};
+            db.update(RutinaContract.RutinaEntry.TABLE_NAME,values, where, whereArgs);
+            db.close();
+
+        }
 
     }
 

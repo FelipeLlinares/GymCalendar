@@ -1,6 +1,7 @@
 package com.example.gymcalendar;
 
 public class Ejercicio {
+    private int _ID;
     private String Ejercicio;
     private int numSeries;
     private int peso;
@@ -36,5 +37,13 @@ public class Ejercicio {
 
     public void setNumRepeticiones(int numRepeticiones) {
         this.numRepeticiones = numRepeticiones;
+    }
+
+    public int get_ID() {
+        return _ID;
+    }
+
+    public void set_ID(int _ID) {
+        this._ID = _ID;
     }
 }

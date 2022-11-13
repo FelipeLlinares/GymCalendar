@@ -11,4 +11,5 @@
     <string name="SERIES">SERIES</string>
     <string name="FECHA_NO_SELECCIONADA">Por favor, seleccione una fecha.</string>
     <string name="RELLENAR_TODOS_CAMPOS">Por favor, rellene todos los campos.</string>
+    <string name="BORRAR_NO_VACIO">Seleccione un ejercicio para poder eliminarlo.</string>
 </resources>
