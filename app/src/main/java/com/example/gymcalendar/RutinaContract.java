@@ -1,5 +1,7 @@
 package com.example.gymcalendar;
 
+import static com.example.gymcalendar.RutinaDbHelper.SQL_DELETE_ENTRIES;
+
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;

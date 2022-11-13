@@ -14,15 +14,15 @@ public class Ejercicio {
     private int _ID;
     private String Ejercicio;
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
-    private Date fecha;
+    private String fecha;
     private int numSeries;
     private int peso;
     private int numRepeticiones;

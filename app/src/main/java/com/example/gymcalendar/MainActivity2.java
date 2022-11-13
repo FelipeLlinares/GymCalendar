@@ -12,17 +12,14 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.view.View;
 import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class MainActivity2 extends AppCompatActivity {
@@ -41,8 +38,7 @@ public class MainActivity2 extends AppCompatActivity {
     private SQLiteDatabase db;
     private EjerciciosHeaderAdapter ejerciciosHeaderAdapter;
 
-
-    private Ejercicio seleccionado;
+    private Ejercicio seleccionado = null;
 
 
     @Override
@@ -77,13 +73,6 @@ public class MainActivity2 extends AppCompatActivity {
             e.printStackTrace();
         }
 
-       //  db= MainActivity.db;
-       // dbHelper= MainActivity.dbHelper;
-
-
-        seleccionado=null;
-
-
     }
 
     private List<Ejercicio> buscarEjericios() throws ParseException {
@@ -97,18 +86,17 @@ public class MainActivity2 extends AppCompatActivity {
                 RutinaContract.RutinaEntry.COLUMN_NAME_SERIES,
                 RutinaContract.RutinaEntry.COLUMN_NAME_REPETICIONES
         };
-        String where = RutinaContract.RutinaEntry.COLUMN_NAME_EJERCICIO + " = ?";
-        String[] whereArgs = { "Sentadilla" };
+        String where = RutinaContract.RutinaEntry.COLUMN_NAME_FECHA + " = ?";
+        String[] whereArgs = { txtFecha.getText().toString() };
 
         Cursor cursor = db.query(RutinaContract.RutinaEntry.TABLE_NAME,columns,where,whereArgs,null,null,null);
         Ejercicio ejercicio;
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
         try {
             while (cursor.moveToNext()) {
                 ejercicio = new Ejercicio();
                 ejercicio.set_ID(cursor.getInt(0));
-                ejercicio.setFecha(dateFormat.parse(cursor.getString(1)));
+                ejercicio.setFecha(cursor.getString(1));
                 ejercicio.setEjercicio(cursor.getString(2));
                 ejercicio.setPeso(cursor.getInt(3));
                 ejercicio.setNumSeries(cursor.getInt(4));
@@ -147,13 +135,6 @@ public class MainActivity2 extends AppCompatActivity {
 
         }
     }
-
-
-
-
-
-
-
 
     public void onLimpiar(View view){
         etxEjercicio.setText("");
@@ -197,9 +178,7 @@ public class MainActivity2 extends AppCompatActivity {
             String[] whereArgs = {String.valueOf(seleccionado.get_ID())};
             db.update(RutinaContract.RutinaEntry.TABLE_NAME,values, where, whereArgs);
             db.close();
-
         }
-
     }
 
 }

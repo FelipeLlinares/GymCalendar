@@ -31,7 +31,7 @@ public class EjerciciosHeaderAdapter extends RecyclerView.Adapter<EjerciciosHead
 
     @Override
     public void onBindViewHolder(@NonNull EjerciciosHeaderAdapter.MyViewHolder holder, int position) {
-        holder.tRepeticiones.setText(String.valueOf(ejercicios.get(position).getEjercicio()));
+        holder.tEjercicio.setText(String.valueOf(ejercicios.get(position).getEjercicio()));
         holder.tPeso.setText(String.valueOf(ejercicios.get(position).getPeso()));
         holder.tRepeticiones.setText(String.valueOf(ejercicios.get(position).getNumRepeticiones()));
         holder.tSeries.setText(String.valueOf(ejercicios.get(position).getNumSeries()));

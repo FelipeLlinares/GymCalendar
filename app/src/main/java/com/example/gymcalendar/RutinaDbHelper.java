@@ -11,7 +11,7 @@ public class RutinaDbHelper extends SQLiteOpenHelper {
     public static final String SQL_CREATE_ENTRIES = "CREATE TABLE " +
                     RutinaContract.RutinaEntry.TABLE_NAME + " (" +
                         RutinaContract.RutinaEntry._ID + " INTEGER PRIMARY KEY," +
-                        RutinaContract.RutinaEntry.COLUMN_NAME_FECHA + " DATE," +
+                        RutinaContract.RutinaEntry.COLUMN_NAME_FECHA + " TEXT," +
                         RutinaContract.RutinaEntry.COLUMN_NAME_EJERCICIO + " TEXT," +
                         RutinaContract.RutinaEntry.COLUMN_NAME_SERIES + " INTEGER," +
                         RutinaContract.RutinaEntry.COLUMN_NAME_PESO + " INTEGER," +

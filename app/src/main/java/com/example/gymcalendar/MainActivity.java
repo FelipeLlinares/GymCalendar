@@ -24,9 +24,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        dbHelper = new RutinaDbHelper(getApplicationContext(), "myrutina.db");
+        dbHelper = new RutinaDbHelper(getApplicationContext(), "rutina.db");
         db = dbHelper.getWritableDatabase();
-        RutinaContract.RutinaEntry.initRutina(db);
+        //RutinaContract.RutinaEntry.initRutina(db);
 
         calendarView = (CalendarView) findViewById(R.id.calendarView);
         btnVerDia = (Button) findViewById(R.id.btnVerDia) ;
@@ -36,7 +36,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month,
                                             int dayOfMonth) {
-            dateSeleccionado = dayOfMonth + "/"+ month+ "/" + year;
+            month = month + 1;
+            dateSeleccionado = dayOfMonth + "/"+ month + "/" + year;
             }
         });
 
