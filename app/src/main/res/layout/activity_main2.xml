@@ -11,26 +11,31 @@
         android:layout_width="381dp"
         android:layout_height="281dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="27dp"
         android:layout_marginEnd="11dp"
-        android:layout_marginBottom="73dp"
+        android:layout_marginBottom="36dp"
         app:layout_constraintBottom_toTopOf="@+id/btnAñadir"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtFecha"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/etxEjercicio"
         android:layout_width="118dp"
         android:layout_height="29dp"
+        android:layout_marginBottom="20dp"
         android:ems="10"
         android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="135dp"
-        tools:layout_editor_absoluteY="411dp" />
+        app:layout_constraintBottom_toTopOf="@+id/etxPeso"
+        tools:layout_editor_absoluteX="135dp" />
 
     <EditText
         android:id="@+id/etxPeso"
         android:layout_width="118dp"
         android:layout_height="29dp"
-        android:layout_marginStart="71dp"
+        android:layout_marginStart="76dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintStart_toEndOf="@+id/txtPeso"
@@ -60,10 +65,18 @@
         android:id="@+id/txtEjercicio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="31dp"
+        android:layout_marginEnd="37dp"
+        android:layout_marginBottom="32dp"
         android:text="@string/EJERCICIO"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="421dp" />
+        app:layout_constraintBottom_toTopOf="@+id/txtPeso"
+        app:layout_constraintEnd_toStartOf="@+id/etxEjercicio"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView"
+        app:layout_constraintVertical_bias="0.09" />
 
     <TextView
         android:id="@+id/txtPeso"
@@ -76,62 +89,81 @@
 
     <TextView
         android:id="@+id/txtSeries"
-        android:layout_width="wrap_content"
+        android:layout_width="47dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
         android:text="@string/SERIES"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="28dp"
+        app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="531dp" />
 
     <TextView
         android:id="@+id/txtRepeticiones"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginEnd="9dp"
         android:text="@string/REPETICIONES"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="28dp"
+        app:layout_constraintEnd_toStartOf="@+id/etxRepeticiones"
+        app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="589dp" />
 
     <Button
         android:id="@+id/btnLimpiar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="282dp"
+        android:layout_marginEnd="33dp"
+        android:onClick="onLimpiar"
         android:text="@string/LIMPIAR"
-        tools:layout_editor_absoluteX="282dp"
-        tools:layout_editor_absoluteY="646dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.222"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="631dp" />
 
     <Button
         android:id="@+id/btnBorrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="84dp"
+        android:onClick="onBorrar"
         android:text="@string/BORRAR"
-        tools:layout_editor_absoluteX="282dp"
-        tools:layout_editor_absoluteY="570dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="560dp" />
 
     <Button
         android:id="@+id/btnAñadir"
         android:layout_width="104dp"
         android:layout_height="47dp"
+        android:layout_marginEnd="72dp"
+        android:onClick="onAñadir"
         android:text="@string/AÑADIR"
-        tools:layout_editor_absoluteX="282dp"
+        app:layout_constraintEnd_toEndOf="parent"
         tools:layout_editor_absoluteY="411dp" />
 
     <Button
         android:id="@+id/btnModificar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="onModificar"
         android:text="@string/MODIFICAR"
-        tools:layout_editor_absoluteX="282dp"
-        tools:layout_editor_absoluteY="491dp" />
+        tools:layout_editor_absoluteX="293dp"
+        tools:layout_editor_absoluteY="486dp" />
 
     <TextView
         android:id="@+id/txtFecha"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="117dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="165dp"
         android:layout_marginTop="36dp"
-        android:layout_marginBottom="27dp"
+        android:layout_marginEnd="129dp"
         android:text="diaa"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="192dp" />
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
