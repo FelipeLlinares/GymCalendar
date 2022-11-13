@@ -8,18 +8,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.material.snackbar.Snackbar;
-
-import java.util.Date;
-
 
 public class MainActivity extends AppCompatActivity {
 
-    private RutinaDbHelper dbHelper;
-    private SQLiteDatabase db;
+    protected static RutinaDbHelper dbHelper;
+    protected static SQLiteDatabase db;
 
     private CalendarView calendarView;
     private Button btnVerDia;
