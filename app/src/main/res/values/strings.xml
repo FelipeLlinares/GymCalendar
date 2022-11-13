@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">GymCalendar</string>
+    <string name="VER">VER</string>
+    <string name="LIMPIAR">LIMPIAR</string>
+    <string name="MODIFICAR">MODIFICAR</string>
+    <string name="AÑADIR">AÑADIR</string>
+    <string name="BORRAR">BORRAR</string>
+    <string name="EJERCICIO">EJERCICIO</string>
+    <string name="REPETICIONES">REPETICIONES</string>
+    <string name="PESO">PESO</string>
+    <string name="SERIES">SERIES</string>
+    <string name="FECHA_NO_SELECCIONADA">Una debe estar seleccionada</string>
+    <string name="RELLENAR_TODOS_CAMPOS">Por favor, rellene todos los campos</string>
 </resources>

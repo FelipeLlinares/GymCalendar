@@ -7,10 +7,15 @@
     tools:context=".MainActivity2">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="384dp"
-        android:layout_height="320dp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="83dp" />
+        android:id="@+id/recyclerView"
+        android:layout_width="381dp"
+        android:layout_height="281dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="73dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnAñadir"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/etxEjercicio"
@@ -18,109 +23,115 @@
         android:layout_height="29dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
-        tools:layout_editor_absoluteX="113dp"
-        tools:layout_editor_absoluteY="450dp" />
+        tools:layout_editor_absoluteX="135dp"
+        tools:layout_editor_absoluteY="411dp" />
 
     <EditText
         android:id="@+id/etxPeso"
         android:layout_width="118dp"
         android:layout_height="29dp"
+        android:layout_marginStart="71dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
-        tools:layout_editor_absoluteX="95dp"
-        tools:layout_editor_absoluteY="502dp" />
+        app:layout_constraintStart_toEndOf="@+id/txtPeso"
+        tools:layout_editor_absoluteY="462dp" />
 
     <EditText
         android:id="@+id/etxSeries"
         android:layout_width="118dp"
         android:layout_height="29dp"
+        android:layout_marginStart="60dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
-        tools:layout_editor_absoluteX="103dp"
-        tools:layout_editor_absoluteY="558dp" />
+        app:layout_constraintStart_toEndOf="@+id/txtSeries"
+        tools:layout_editor_absoluteY="521dp" />
 
     <EditText
         android:id="@+id/etxRepeticiones"
         android:layout_width="118dp"
         android:layout_height="29dp"
+        android:layout_marginStart="9dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
-        tools:layout_editor_absoluteX="103dp"
-        tools:layout_editor_absoluteY="615dp" />
+        app:layout_constraintStart_toEndOf="@+id/txtRepeticiones"
+        tools:layout_editor_absoluteY="589dp" />
 
     <TextView
         android:id="@+id/txtEjercicio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="450dp" />
+        android:text="@string/EJERCICIO"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="28dp"
+        tools:layout_editor_absoluteY="421dp" />
 
     <TextView
         android:id="@+id/txtPeso"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="512dp" />
+        android:text="@string/PESO"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="28dp"
+        tools:layout_editor_absoluteY="472dp" />
 
     <TextView
         android:id="@+id/txtSeries"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="568dp" />
+        android:text="@string/SERIES"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="28dp"
+        tools:layout_editor_absoluteY="531dp" />
 
     <TextView
         android:id="@+id/txtRepeticiones"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="625dp" />
+        android:text="@string/REPETICIONES"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="28dp"
+        tools:layout_editor_absoluteY="589dp" />
 
     <Button
         android:id="@+id/btnLimpiar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="279dp"
-        tools:layout_editor_absoluteY="453dp" />
+        android:text="@string/LIMPIAR"
+        tools:layout_editor_absoluteX="282dp"
+        tools:layout_editor_absoluteY="646dp" />
 
     <Button
         android:id="@+id/btnBorrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="279dp"
-        tools:layout_editor_absoluteY="512dp" />
+        android:text="@string/BORRAR"
+        tools:layout_editor_absoluteX="282dp"
+        tools:layout_editor_absoluteY="570dp" />
 
     <Button
         android:id="@+id/btnAñadir"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="278dp"
-        tools:layout_editor_absoluteY="581dp" />
+        android:layout_width="104dp"
+        android:layout_height="47dp"
+        android:text="@string/AÑADIR"
+        tools:layout_editor_absoluteX="282dp"
+        tools:layout_editor_absoluteY="411dp" />
 
     <Button
         android:id="@+id/btnModificar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="279dp"
-        tools:layout_editor_absoluteY="648dp" />
+        android:text="@string/MODIFICAR"
+        tools:layout_editor_absoluteX="282dp"
+        tools:layout_editor_absoluteY="491dp" />
 
     <TextView
         android:id="@+id/txtFecha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="163dp"
-        tools:layout_editor_absoluteY="41dp" />
+        android:layout_marginTop="36dp"
+        android:layout_marginBottom="27dp"
+        android:text="diaa"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="192dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
