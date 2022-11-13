@@ -58,4 +58,6 @@ public class Ejercicio {
     public void setNumRepeticiones(int numRepeticiones) {
         this.numRepeticiones = numRepeticiones;
     }
+
+
 }
