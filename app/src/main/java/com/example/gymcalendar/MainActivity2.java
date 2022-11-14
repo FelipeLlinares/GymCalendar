@@ -1,8 +1,6 @@
 package com.example.gymcalendar;
 
 import static com.example.gymcalendar.MainActivity.DATABASE_NAME;
-import static java.sql.DriverManager.println;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,13 +12,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -86,8 +83,8 @@ public class MainActivity2 extends AppCompatActivity {
                 // ...
             }
         }));
-
     }
+
     private void desmarcar(){
         int n = recyclerView.getChildCount();
         for(int i=0;i<n;i++){
@@ -105,6 +102,7 @@ public class MainActivity2 extends AppCompatActivity {
         recyclerView.setAdapter(ejerciciosHeaderAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity2.this));
     }
+
 
     private List<Ejercicio> buscarEjericios() throws ParseException {
         List<Ejercicio> ejercicioList = new ArrayList<>();
@@ -170,6 +168,7 @@ public class MainActivity2 extends AppCompatActivity {
             cargarGrid();
             db.close();
         }
+        hideSoftKeyboard(etxRepeticiones);
     }
 
     public void onLimpiar(View view){
@@ -199,6 +198,7 @@ public class MainActivity2 extends AppCompatActivity {
             limpiarCampos();
             db.close();
         }
+        hideSoftKeyboard(etxRepeticiones);
     }
 
 
@@ -231,6 +231,14 @@ public class MainActivity2 extends AppCompatActivity {
                 db.close();
             }
         }
+        hideSoftKeyboard(etxRepeticiones);
+
+    }
+
+    private void hideSoftKeyboard(View v) {
+        InputMethodManager inputMethodManager;
+        inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(v.getWindowToken(), 0);
     }
 
 }
