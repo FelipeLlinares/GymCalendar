@@ -13,4 +13,7 @@
     <string name="RELLENAR_TODOS_CAMPOS">Por favor, rellene todos los campos.</string>
     <string name="BORRAR_NO_VACIO">Seleccione un ejercicio para poder eliminarlo.</string>
     <string name="modificar_debeSeleccionar">Por favor, seleccione el ejercicio que quiera modificar.</string>
+    <string name="Añadido_con_exito">Añadido con éxito.</string>
+    <string name="Borrado_correctamente">Eliminado correctamente.</string>
+    <string name="Modificado_correctamente">La rutina ha sido modificada correctamente.</string>
 </resources>

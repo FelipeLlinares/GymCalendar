@@ -167,6 +167,7 @@ public class MainActivity2 extends AppCompatActivity {
             limpiarCampos();
             cargarGrid();
             db.close();
+            Toast.makeText(this, R.string.Añadido_con_exito, Toast.LENGTH_LONG).show();
         }
         hideSoftKeyboard(etxRepeticiones);
     }
@@ -197,6 +198,7 @@ public class MainActivity2 extends AppCompatActivity {
             cargarGrid();
             limpiarCampos();
             db.close();
+            Toast.makeText(this, R.string.Borrado_correctamente, Toast.LENGTH_LONG).show();
         }
         hideSoftKeyboard(etxRepeticiones);
     }
@@ -229,6 +231,7 @@ public class MainActivity2 extends AppCompatActivity {
                 limpiarCampos();
                 cargarGrid();
                 db.close();
+                Toast.makeText(this, R.string.Modificado_correctamente,Toast.LENGTH_LONG).show();
             }
         }
         hideSoftKeyboard(etxRepeticiones);
